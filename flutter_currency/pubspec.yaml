@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  json_serializable: ^3.5.1
+  get:
+  retrofit: any
+  logger: any  #for logging purpose
   flutter:
     sdk: flutter
 
@@ -30,6 +34,8 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  retrofit_generator: any
+  build_runner: any
   flutter_test:
     sdk: flutter
 
