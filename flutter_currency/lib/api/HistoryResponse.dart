@@ -5,10 +5,11 @@ part 'HistoryResponse.g.dart';
 @JsonSerializable()
 class HistoryResponse {
   String base;
-  String date;
+  String start_at;
+  String end_at;
   Map<String, Map<String, double>> rates;
 
-  HistoryResponse({this.base, this.date, this.rates});
+  HistoryResponse({this.base, this.start_at, this.end_at, this.rates});
 
   factory HistoryResponse.fromJson(Map<String, dynamic> json) =>
       _$HistoryResponseFromJson(json);

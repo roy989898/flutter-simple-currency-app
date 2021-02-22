@@ -13,7 +13,7 @@ class Controller extends GetxController {
         Dio(); // Provide a dio instance// config your dio headers globally
     final client = RestClient(dio);
 
-    client.getLatestRate('USD').then((value) {
+    client.getHistory('2018-01-01', '2018-09-01', 'USD').then((value) {
       print('success');
       print(json.encode(value));
     }).catchError((error) {
