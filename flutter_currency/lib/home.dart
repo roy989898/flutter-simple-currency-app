@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'count_controller.dart';
+import 'extension_function.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -15,8 +16,13 @@ class Home extends StatelessWidget {
 
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
         body: Center(
-            child: RaisedButton(
-                child: Text("Go to Other"), onPressed: () => Get.to(Other()))),
+            child: Column(
+          children: [
+            RaisedButton(
+                child: Text("Go to Other"), onPressed: () => Get.to(Other())),
+            ImageFlag25X('USD'),
+          ],
+        )),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add), onPressed: c.increment));
   }
