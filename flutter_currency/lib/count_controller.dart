@@ -11,7 +11,7 @@ class Controller extends GetxController {
 
   increment() {
     Parser p = new Parser();
-    Expression exp = p.parse("3+3*8");
+    Expression exp = p.parse("${count.value}+3*8");
     String result = exp.evaluate(EvaluationType.REAL, null).toString();
     print(result);
 
