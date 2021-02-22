@@ -7,16 +7,17 @@ part of 'HistoryResponse.dart';
 // **************************************************************************
 
 HistoryResponse _$HistoryResponseFromJson(Map<String, dynamic> json) {
-  return HistoryResponse()
-    ..base = json['base'] as String
-    ..date = json['date'] as String
-    ..rates = (json['rates'] as Map<String, dynamic>)?.map(
+  return HistoryResponse(
+    base: json['base'] as String,
+    date: json['date'] as String,
+    rates: (json['rates'] as Map<String, dynamic>)?.map(
       (k, e) => MapEntry(
           k,
           (e as Map<String, dynamic>)?.map(
             (k, e) => MapEntry(k, (e as num)?.toDouble()),
           )),
-    );
+    ),
+  );
 }
 
 Map<String, dynamic> _$HistoryResponseToJson(HistoryResponse instance) =>
