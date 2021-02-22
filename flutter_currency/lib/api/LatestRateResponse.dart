@@ -7,7 +7,7 @@ part 'LatestRateResponse.g.dart';
 class LatestRateResponse {
   String base;
   String date;
-  Rates rates;
+  Map<String, double> rates;
 
   LatestRateResponse({this.base, this.date, this.rates});
 

@@ -10,9 +10,9 @@ LatestRateResponse _$LatestRateResponseFromJson(Map<String, dynamic> json) {
   return LatestRateResponse(
     base: json['base'] as String,
     date: json['date'] as String,
-    rates: json['rates'] == null
-        ? null
-        : Rates.fromJson(json['rates'] as Map<String, dynamic>),
+    rates: (json['rates'] as Map<String, dynamic>)?.map(
+      (k, e) => MapEntry(k, (e as num)?.toDouble()),
+    ),
   );
 }
 
