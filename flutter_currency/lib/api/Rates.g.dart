@@ -1,0 +1,81 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'Rates.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Rates _$RatesFromJson(Map<String, dynamic> json) {
+  return Rates(
+    AUD: (json['AUD'] as num)?.toDouble(),
+    BGN: (json['BGN'] as num)?.toDouble(),
+    BRL: (json['BRL'] as num)?.toDouble(),
+    CAD: (json['CAD'] as num)?.toDouble(),
+    CHF: (json['CHF'] as num)?.toDouble(),
+    CNY: (json['CNY'] as num)?.toDouble(),
+    CZK: (json['CZK'] as num)?.toDouble(),
+    DKK: (json['DKK'] as num)?.toDouble(),
+    EUR: (json['EUR'] as num)?.toDouble(),
+    GBP: (json['GBP'] as num)?.toDouble(),
+    HKD: (json['HKD'] as num)?.toDouble(),
+    HRK: (json['HRK'] as num)?.toDouble(),
+    HUF: (json['HUF'] as num)?.toDouble(),
+    IDR: (json['IDR'] as num)?.toDouble(),
+    ILS: (json['ILS'] as num)?.toDouble(),
+    INR: (json['INR'] as num)?.toDouble(),
+    ISK: (json['ISK'] as num)?.toDouble(),
+    JPY: (json['JPY'] as num)?.toDouble(),
+    KRW: (json['KRW'] as num)?.toDouble(),
+    MXN: (json['MXN'] as num)?.toDouble(),
+    MYR: (json['MYR'] as num)?.toDouble(),
+    NOK: (json['NOK'] as num)?.toDouble(),
+    NZD: (json['NZD'] as num)?.toDouble(),
+    PHP: (json['PHP'] as num)?.toDouble(),
+    PLN: (json['PLN'] as num)?.toDouble(),
+    RON: (json['RON'] as num)?.toDouble(),
+    RUB: (json['RUB'] as num)?.toDouble(),
+    SEK: (json['SEK'] as num)?.toDouble(),
+    SGD: (json['SGD'] as num)?.toDouble(),
+    THB: (json['THB'] as num)?.toDouble(),
+    TRY: (json['TRY'] as num)?.toDouble(),
+    USD: (json['USD'] as num)?.toDouble(),
+    ZAR: (json['ZAR'] as num)?.toDouble(),
+  );
+}
+
+Map<String, dynamic> _$RatesToJson(Rates instance) => <String, dynamic>{
+      'AUD': instance.AUD,
+      'BGN': instance.BGN,
+      'BRL': instance.BRL,
+      'CAD': instance.CAD,
+      'CHF': instance.CHF,
+      'CNY': instance.CNY,
+      'CZK': instance.CZK,
+      'DKK': instance.DKK,
+      'EUR': instance.EUR,
+      'GBP': instance.GBP,
+      'HKD': instance.HKD,
+      'HRK': instance.HRK,
+      'HUF': instance.HUF,
+      'IDR': instance.IDR,
+      'ILS': instance.ILS,
+      'INR': instance.INR,
+      'ISK': instance.ISK,
+      'JPY': instance.JPY,
+      'KRW': instance.KRW,
+      'MXN': instance.MXN,
+      'MYR': instance.MYR,
+      'NOK': instance.NOK,
+      'NZD': instance.NZD,
+      'PHP': instance.PHP,
+      'PLN': instance.PLN,
+      'RON': instance.RON,
+      'RUB': instance.RUB,
+      'SEK': instance.SEK,
+      'SGD': instance.SGD,
+      'THB': instance.THB,
+      'TRY': instance.TRY,
+      'USD': instance.USD,
+      'ZAR': instance.ZAR,
+    };
