@@ -20,4 +20,10 @@ class ApiManager {
       String startAt, String endAt, String base) {
     return _client.getHistory(startAt, endAt, base);
   }
+
+  Future<List<String>> getCurrency() {
+    return _client.getLatestRate("USD").then((LatestRateResponse value) {
+      return value.rates.keys.toList();
+    });
+  }
 }

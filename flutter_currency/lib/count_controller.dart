@@ -12,7 +12,7 @@ class Controller extends GetxController {
     count++;
     final apiManager = ApiManager();
 
-    apiManager.getLatestRate('USD').then((value) {
+    apiManager.getCurrency().then((value) {
       print('success');
       print(json.encode(value));
     }).catchError((error) {
