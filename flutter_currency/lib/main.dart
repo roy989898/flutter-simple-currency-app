@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_currency/home.dart';
 import 'package:get/get.dart';
 
+import 'MainController.dart';
+import 'api/ApiManager.dart';
 import 'page/CalculatorPage/CalculatorPage.dart';
 
 void main() {
+  Get.put(ApiManager());
+  Get.put(MainController());
   runApp(MyApp());
 }
 

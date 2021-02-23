@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency/widget/CalculatorButton.dart';
 import 'package:get/get.dart';
+import '../../MainController.dart';
 import '../../colors.dart';
 import 'CalculatorController.dart';
 
 class CalculatorPage extends StatelessWidget {
   final CalculatorController c = Get.put(CalculatorController());
+  final MainController mainC = Get.find();
 
   @override
   Widget build(BuildContext context) {

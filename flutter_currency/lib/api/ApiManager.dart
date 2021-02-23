@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 
 import 'HistoryResponse.dart';
 import 'LatestRateResponse.dart';
 import 'RateClient.dart';
 
-class ApiManager {
+class ApiManager extends GetxService {
   RestClient _client;
 
   ApiManager() {
