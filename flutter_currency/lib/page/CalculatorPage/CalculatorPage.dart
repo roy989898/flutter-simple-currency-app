@@ -25,9 +25,11 @@ class CalculatorPage extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        FlagAndValue('usd', 0),
-                        Obx(
+                        // FlagAndValue('usd', 0),
+                        ...createCurrencyWidgetList(c.toDisplayCurrency),
+                        /*     Obx(
                           () => Text(
                             c.calFormula.string,
                             style: TextStyle(
@@ -44,7 +46,7 @@ class CalculatorPage extends StatelessWidget {
                               color: white,
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -238,5 +240,23 @@ class CalculatorPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> createCurrencyWidgetList(List<String> currency) {
+    List<String> toUse = [];
+/*    if (currency.length > 6) {
+      toUse = currency.sublist(0, 7);
+    } else*/
+    toUse = currency;
+
+    // List<Widget> wList =
+    //     toUse.map((e) => Obx(() => FlagAndValue(e, 0))).toList();
+    List<Widget> wList = toUse
+        .map((e) => Expanded(
+              flex: 1,
+              child: FlagAndValue(e, 0),
+            ))
+        .toList();
+    return wList;
   }
 }

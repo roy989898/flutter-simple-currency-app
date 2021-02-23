@@ -18,7 +18,10 @@ class FlagAndValue extends StatelessWidget {
       children: [
         Row(
           children: [
-            ImageFlag25X(currency),
+            SizedBox(
+              width: 55,
+              child: ImageFlag(currency),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
