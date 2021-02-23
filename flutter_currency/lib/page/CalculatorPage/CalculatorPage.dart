@@ -28,25 +28,13 @@ class CalculatorPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // FlagAndValue('usd', 0),
-                        ...createCurrencyWidgetList(c.toDisplayCurrency),
-                        /*     Obx(
-                          () => Text(
-                            c.calFormula.string,
-                            style: TextStyle(
-                              fontSize: 40,
-                              color: white,
-                            ),
-                          ),
-                        ),
-                        Obx(
-                          () => Text(
-                            c.answer.string,
-                            style: TextStyle(
-                              fontSize: 40,
-                              color: white,
-                            ),
-                          ),
-                        ),*/
+
+                        createCurrencyWidget(0),
+                        createCurrencyWidget(1),
+                        createCurrencyWidget(2),
+                        createCurrencyWidget(3),
+                        createCurrencyWidget(4),
+                        createCurrencyWidget(5),
                       ],
                     ),
                   ),
@@ -242,30 +230,14 @@ class CalculatorPage extends StatelessWidget {
     );
   }
 
-  List<Widget> createCurrencyWidgetList(List<String> currency) {
-    /* List<String> toUse = [];
-*/ /*    if (currency.length > 6) {
-      toUse = currency.sublist(0, 7);
-    } else*/ /*
-    toUse = currency;
-
-    // List<Widget> wList =
-    //     toUse.map((e) => Obx(() => FlagAndValue(e, 0))).toList();
-    List<Widget> wList = toUse
-        .map((e) => Expanded(
-              flex: 1,
-              child: FlagAndValue(e, 0),
-            ))
-        .toList();*/
-
-    List<Widget> wList2 = [];
-    for (var i = 0; i < currency.length; i++) {
-      var w = Obx(() => Expanded(
-            flex: 1,
-            child: FlagAndValue(c.toDisplayCurrency[i], 0),
-          ));
-      wList2.add(w);
-    }
-    return wList2;
+  createCurrencyWidget(int index) {
+    return Obx(() {
+      try {
+        return Expanded(
+            flex: 1, child: FlagAndValue(c.toDisplayCurrency[index] ?? '', 0));
+      } catch (e) {
+        return Container();
+      }
+    });
   }
 }
