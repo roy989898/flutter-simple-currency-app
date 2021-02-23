@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  rxdart: ^0.25.0
   json_serializable: ^3.5.1
   get:
   math_expressions: ^2.0.2
