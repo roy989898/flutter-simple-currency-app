@@ -1,13 +1,30 @@
 import 'package:get/get.dart';
 import 'package:math_expressions/math_expressions.dart';
+import '../../MainController.dart';
 
 class CalculatorController extends GetxController {
   var calFormula = "".obs;
   var answer = "".obs;
+  final MainController mainC = Get.find();
+  RxList<String> toDisplayCurrency = List<String>().obs;
 
   CalculatorController() {
     calFormula.listen((ss) {
       answer.value = _calculate(ss);
+    });
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print('onReady in CalculatorController');
+    mainC.currency.listen((List<String> currencys) {
+      print(' mainC.currency.listen: ' + currencys.length.toString());
+      if (currencys.length > 6) {
+        toDisplayCurrency.assignAll(currencys.getRange(0, 7));
+      } else {
+        toDisplayCurrency.assignAll(currencys);
+      }
     });
   }
 

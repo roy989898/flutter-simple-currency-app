@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../MainController.dart';
 import '../../colors.dart';
 import 'CalculatorController.dart';
+import '../../widget/FlagAndValue.dart';
 
 class CalculatorPage extends StatelessWidget {
   final CalculatorController c = Get.put(CalculatorController());
@@ -18,29 +19,35 @@ class CalculatorPage extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                width: double.infinity,
                 color: dark,
-                child: Column(
-                  children: [
-                    Obx(
-                      () => Text(
-                        c.calFormula.string,
-                        style: TextStyle(
-                          fontSize: 40,
-                          color: white,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Container(
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        FlagAndValue('usd', 0),
+                        Obx(
+                          () => Text(
+                            c.calFormula.string,
+                            style: TextStyle(
+                              fontSize: 40,
+                              color: white,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Obx(
-                      () => Text(
-                        c.answer.string,
-                        style: TextStyle(
-                          fontSize: 40,
-                          color: white,
+                        Obx(
+                          () => Text(
+                            c.answer.string,
+                            style: TextStyle(
+                              fontSize: 40,
+                              color: white,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
