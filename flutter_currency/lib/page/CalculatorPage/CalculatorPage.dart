@@ -243,10 +243,10 @@ class CalculatorPage extends StatelessWidget {
   }
 
   List<Widget> createCurrencyWidgetList(List<String> currency) {
-    List<String> toUse = [];
-/*    if (currency.length > 6) {
+    /* List<String> toUse = [];
+*/ /*    if (currency.length > 6) {
       toUse = currency.sublist(0, 7);
-    } else*/
+    } else*/ /*
     toUse = currency;
 
     // List<Widget> wList =
@@ -256,7 +256,16 @@ class CalculatorPage extends StatelessWidget {
               flex: 1,
               child: FlagAndValue(e, 0),
             ))
-        .toList();
-    return wList;
+        .toList();*/
+
+    List<Widget> wList2 = [];
+    for (var i = 0; i < currency.length; i++) {
+      var w = Obx(() => Expanded(
+            flex: 1,
+            child: FlagAndValue(c.toDisplayCurrency[i], 0),
+          ));
+      wList2.add(w);
+    }
+    return wList2;
   }
 }
