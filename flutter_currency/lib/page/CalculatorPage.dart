@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../HexColor.dart';
+import '../colors.dart';
 
 class CalculatorPage extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class CalculatorPage extends StatelessWidget {
               flex: 1,
               child: Container(
                 width: double.infinity,
-                color: HexColor('#2B2F38'),
+                color: dark,
                 child: Text('Up'),
               ),
             ),
@@ -21,6 +22,7 @@ class CalculatorPage extends StatelessWidget {
               flex: 1,
               child: Container(
                 width: double.infinity,
+                color: white,
                 child: Text('Down'),
               ),
             )
