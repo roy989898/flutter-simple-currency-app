@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency/widget/CalculatorButton.dart';
-
+import 'package:get/get.dart';
 import '../../colors.dart';
+import 'CalculatorController.dart';
 
 class CalculatorPage extends StatelessWidget {
+  final CalculatorController c = Get.put(CalculatorController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,7 +18,15 @@ class CalculatorPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 color: dark,
-                child: Text('Up'),
+                child: Obx(
+                  () => Text(
+                    c.calFormula.string,
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: white,
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -33,28 +44,36 @@ class CalculatorPage extends StatelessWidget {
                             flex: 1,
                             child: CButton(
                               keyIn: '7',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '8',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '9',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '+',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                         ],
@@ -68,28 +87,36 @@ class CalculatorPage extends StatelessWidget {
                             flex: 1,
                             child: CButton(
                               keyIn: '4',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '5',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '6',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '-',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                         ],
@@ -103,28 +130,36 @@ class CalculatorPage extends StatelessWidget {
                             flex: 1,
                             child: CButton(
                               keyIn: '1',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '2',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '3',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: 'x',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                         ],
@@ -138,28 +173,36 @@ class CalculatorPage extends StatelessWidget {
                             flex: 1,
                             child: CButton(
                               keyIn: '.',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '0',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '<',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyDel();
+                              },
                             ),
                           ),
                           Expanded(
                             flex: 1,
                             child: CButton(
                               keyIn: '/',
-                              onTap: (key) {},
+                              onTap: (key) {
+                                c.keyIn(key);
+                              },
                             ),
                           ),
                         ],
