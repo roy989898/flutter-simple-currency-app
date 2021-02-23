@@ -18,14 +18,27 @@ class CalculatorPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 color: dark,
-                child: Obx(
-                  () => Text(
-                    c.calFormula.string,
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: white,
+                child: Column(
+                  children: [
+                    Obx(
+                      () => Text(
+                        c.calFormula.string,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: white,
+                        ),
+                      ),
                     ),
-                  ),
+                    Obx(
+                      () => Text(
+                        c.answer.string,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -158,7 +171,7 @@ class CalculatorPage extends StatelessWidget {
                             child: CButton(
                               keyIn: 'x',
                               onTap: (key) {
-                                c.keyIn(key);
+                                c.keyIn('*');
                               },
                             ),
                           ),
