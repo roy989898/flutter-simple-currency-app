@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency/widget/CalculatorButton.dart';
 
-import '../colors.dart';
+import '../../colors.dart';
 
 class CalculatorPage extends StatelessWidget {
   @override

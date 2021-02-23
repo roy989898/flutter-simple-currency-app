@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_currency/home.dart';
 import 'package:get/get.dart';
 
-import 'page/CalculatorPage.dart';
+import 'page/CalculatorPage/CalculatorPage.dart';
 
 void main() {
   runApp(MyApp());
