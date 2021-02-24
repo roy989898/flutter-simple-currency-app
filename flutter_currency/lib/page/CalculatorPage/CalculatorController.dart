@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:math_expressions/math_expressions.dart';
 import '../../MainController.dart';
+import 'package:flutter_currency/RxStore.dart';
 
 class CalculatorController extends GetxController {
   var calFormula = "".obs;
   var answer = "".obs;
   final MainController mainC = Get.find();
+  final RxStore _rxStore = Get.find();
   RxList<String> toDisplayCurrency = List<String>().obs;
+  StreamSubscription<List<String>> _rxCurrencySub;
 
   CalculatorController() {
     calFormula.listen((ss) {
@@ -15,10 +20,10 @@ class CalculatorController extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-    print('onReady in CalculatorController');
-    mainC.currency.listen((List<String> currencys) {
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    _rxCurrencySub = _rxStore.rxCurrencySubject.listen((currencys) {
       print(' mainC.currency.listen: ' + currencys.length.toString());
       if (currencys.length > 6) {
         toDisplayCurrency.assignAll(currencys.getRange(0, 7));
@@ -26,6 +31,18 @@ class CalculatorController extends GetxController {
         toDisplayCurrency.assignAll(currencys);
       }
     });
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print('onReady in CalculatorController');
+  }
+
+  @override
+  void onClose() {
+    _rxCurrencySub?.cancel();
+    super.onClose();
   }
 
   keyIn(String input) {

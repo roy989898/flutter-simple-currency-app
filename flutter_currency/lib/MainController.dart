@@ -9,8 +9,8 @@ import 'api/ApiManager.dart';
 class MainController extends GetxController {
   final ApiManager api = Get.find();
   final RxStore _rxStore = Get.find();
-  RxList<String> currency = List<String>().obs;
-  StreamSubscription<List<String>> _rxCurrencySub;
+  // RxList<String> currency = List<String>().obs;
+
 
   @override
   void onInit() {
@@ -24,14 +24,8 @@ class MainController extends GetxController {
       print(e);
     });
 
-    _rxCurrencySub = _rxStore.rxCurrencySubject.listen((value) {
-      currency.assignAll(value);
-    });
+
   }
 
-  @override
-  void onClose() {
-    _rxCurrencySub?.cancel();
-    super.onClose();
-  }
+
 }
