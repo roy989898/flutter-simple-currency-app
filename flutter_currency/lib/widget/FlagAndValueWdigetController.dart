@@ -16,6 +16,11 @@ class FlagAndValueWdigetController extends GetxController {
     currency.value = sCurrency;
   }
 
+  select() {
+    print(currency.value + ' selected');
+    _rxStore.rxSelectedBaseCurrency.add(currency.value);
+  }
+
   @override
   void onInit() {
     super.onInit();

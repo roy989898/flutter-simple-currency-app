@@ -18,50 +18,54 @@ class FlagAndValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Obx(() => Visibility(
-              visible: _c.visible.value,
-              child: Obx(() => Text(
-                    _c.formula.value,
-                    style: TextStyle(
-                      color: currencyCountryColor,
-                      fontSize: 10,
-                    ),
-                  )),
-            )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 55,
-                  child: ImageFlag(currency),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: Text(
-                    currency,
-                    style: TextStyle(
-                      color: currencyCountryColor,
-                      fontSize: 15,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => _c.select(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Obx(() => Visibility(
+                visible: _c.visible.value,
+                child: Obx(() => Text(
+                      _c.formula.value,
+                      style: TextStyle(
+                        color: currencyCountryColor,
+                        fontSize: 10,
+                      ),
+                    )),
+              )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 55,
+                    child: ImageFlag(currency),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Text(
+                      currency,
+                      style: TextStyle(
+                        color: currencyCountryColor,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Obx(() => Text(
-                  _c.answer.value,
-                  style: TextStyle(
-                    color: currencyValueColor,
-                    fontSize: 30,
-                  ),
-                ))
-          ],
-        ),
-      ],
+                ],
+              ),
+              Obx(() => Text(
+                    _c.answer.value,
+                    style: TextStyle(
+                      color: currencyValueColor,
+                      fontSize: 30,
+                    ),
+                  ))
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
