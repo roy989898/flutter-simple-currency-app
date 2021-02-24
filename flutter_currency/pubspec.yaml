@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   rxdart: ^0.25.0
+  intl: ^0.16.1
   json_serializable: ^3.5.1
   get:
   math_expressions: ^2.0.2
