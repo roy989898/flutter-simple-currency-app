@@ -34,7 +34,7 @@ class CalculatorPage extends StatelessWidget {
                         createCurrencyWidget(2),
                         createCurrencyWidget(3),
                         createCurrencyWidget(4),
-                        createCurrencyWidget(5),
+                        // createCurrencyWidget(5),
                       ],
                     ),
                   ),

@@ -8,6 +8,7 @@ import '../static_method.dart';
 class FlagAndValueWdigetController extends GetxController {
   var answer = "".obs;
   var currency = "".obs;
+  var formula = "".obs;
   final RxStore _rxStore = Get.find();
 
   FlagAndValueWdigetController(String sCurrency) {
@@ -17,7 +18,7 @@ class FlagAndValueWdigetController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
+    formula.bindStream(_rxStore.rxFormula);
     var rxF = RxDart.Rx.combineLatest3(
         _rxStore.rxFormula,
         _rxStore.rxSelectedBaseCurrency,
