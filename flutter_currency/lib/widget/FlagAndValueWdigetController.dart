@@ -18,17 +18,25 @@ class FlagAndValueWdigetController extends GetxController {
   void onInit() {
     super.onInit();
 
-    RxDart.Rx.combineLatest3(
+    var rxF = RxDart.Rx.combineLatest3(
         _rxStore.rxFormula,
         _rxStore.rxSelectedBaseCurrency,
         _rxStore.rxLatestRateResponse, (String formula,
             String selectedBaseCurrency,
             LatestRateResponse latestRateResponse) {
       //  TODO
+
+      double selectedBaseRate = latestRateResponse.rates[currency.value] /
+          latestRateResponse.rates[selectedBaseCurrency];
+      String baseInputAnswer = calculate(formula);
+      var numberAnswer = double.parse(baseInputAnswer, (s) => 0);
+      return (numberAnswer * selectedBaseRate).toString();
     });
-    answer.bindStream(_rxStore.rxFormula.map((String event) {
+    /*answer.bindStream(_rxStore.rxFormula.map((String event) {
       print('in ${currency.value}  $event');
       return calculate(event);
-    }));
+    }));*/
+
+    answer.bindStream(rxF);
   }
 }
