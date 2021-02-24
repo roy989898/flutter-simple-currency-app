@@ -21,12 +21,15 @@ class FlagAndValue extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Obx(() => Text(
-              _c.formula.value,
-              style: TextStyle(
-                color: currencyCountryColor,
-                fontSize: 10,
-              ),
+        Obx(() => Visibility(
+              visible: _c.visible.value,
+              child: Obx(() => Text(
+                    _c.formula.value,
+                    style: TextStyle(
+                      color: currencyCountryColor,
+                      fontSize: 10,
+                    ),
+                  )),
             )),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
