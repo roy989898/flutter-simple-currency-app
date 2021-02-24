@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 import 'package:rxdart/rxdart.dart';
 
+import 'api/LatestRateResponse.dart';
+
 class RxStore extends GetxService {
   final rxCurrencySubject = BehaviorSubject<List<String>>();
   final rxSelectedBaseCurrency = BehaviorSubject<String>();
+  final rxLatestRateResponse = BehaviorSubject<LatestRateResponse>();
   final rxFormula = BehaviorSubject<String>();
   var currenctFormula = '';
 
