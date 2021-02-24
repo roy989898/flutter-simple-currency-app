@@ -13,7 +13,7 @@ class FlagAndValue extends StatelessWidget {
     this.currency = currency.toUpperCase();
     this.value = value;
 
-    _c = Get.put(FlagAndValueWdigetController(currency), tag: "currency");
+    _c = Get.put(FlagAndValueWdigetController(currency), tag: currency);
   }
 
   @override
