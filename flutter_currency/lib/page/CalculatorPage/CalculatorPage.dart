@@ -20,23 +20,20 @@ class CalculatorPage extends StatelessWidget {
               flex: 1,
               child: Container(
                 color: dark,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Container(
-                    width: double.infinity,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // FlagAndValue('usd', 0),
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // FlagAndValue('usd', 0),
 
-                        createCurrencyWidget(0),
-                        createCurrencyWidget(1),
-                        createCurrencyWidget(2),
-                        createCurrencyWidget(3),
-                        createCurrencyWidget(4),
-                        // createCurrencyWidget(5),
-                      ],
-                    ),
+                      createCurrencyWidget(0),
+                      createCurrencyWidget(1),
+                      createCurrencyWidget(2),
+                      createCurrencyWidget(3),
+                      createCurrencyWidget(4),
+                      // createCurrencyWidget(5),
+                    ],
                   ),
                 ),
               ),

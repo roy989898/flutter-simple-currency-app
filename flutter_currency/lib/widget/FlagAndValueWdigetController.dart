@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rxdart/rxdart.dart' as RxDart;
 import 'package:flutter_currency/RxStore.dart';
 import 'package:intl/intl.dart';
+import '../colors.dart';
 import '../static_method.dart';
 
 class FlagAndValueWdigetController extends GetxController {
@@ -10,6 +11,7 @@ class FlagAndValueWdigetController extends GetxController {
   var visible = true.obs;
   var currency = "".obs;
   var formula = "".obs;
+  var backgroundColor = dark.obs;
   final RxStore _rxStore = Get.find();
 
   FlagAndValueWdigetController(String sCurrency) {
@@ -24,6 +26,14 @@ class FlagAndValueWdigetController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    backgroundColor
+        .bindStream(_rxStore.rxSelectedBaseCurrency.map((selectedBaseCurrency) {
+      if (selectedBaseCurrency == currency.value) {
+        return currencySelectedColor;
+      } else {
+        return dark;
+      }
+    }));
     visible.bindStream(_rxStore.rxSelectedBaseCurrency
         .map((selectedBaseCurrency) => selectedBaseCurrency == currency.value));
     formula.bindStream(_rxStore.rxFormula);
