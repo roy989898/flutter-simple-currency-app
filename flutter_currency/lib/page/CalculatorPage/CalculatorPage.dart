@@ -231,7 +231,8 @@ class CalculatorPage extends StatelessWidget {
     return Obx(() {
       try {
         return Expanded(
-            flex: 1, child: FlagAndValue(c.toDisplayCurrency[index] ?? '', 0));
+            flex: 1,
+            child: FlagAndValueAnimation(c.toDisplayCurrency[index] ?? '', 0));
       } catch (e) {
         return Container();
       }
