@@ -6,18 +6,12 @@ import '../../MainController.dart';
 import 'package:flutter_currency/RxStore.dart';
 
 class CalculatorController extends GetxController {
-  var calFormula = "".obs;
-  var answer = "".obs;
   final MainController mainC = Get.find();
   final RxStore _rxStore = Get.find();
   RxList<String> toDisplayCurrency = List<String>().obs;
   StreamSubscription<List<String>> _rxCurrencySub;
 
-  CalculatorController() {
-    calFormula.listen((ss) {
-      answer.value = _calculate(ss);
-    });
-  }
+  CalculatorController() {}
 
   @override
   void onInit() {
@@ -46,14 +40,11 @@ class CalculatorController extends GetxController {
   }
 
   keyIn(String input) {
-    calFormula.value = calFormula.value + input;
+    _rxStore..keyInFormula(input);
   }
 
   keyDel() {
-    if (calFormula.value.length > 0) {
-      calFormula.value =
-          calFormula.value.substring(0, calFormula.value.length - 1);
-    }
+    _rxStore.keyDelFormula();
   }
 
   String _calculate(String input) {

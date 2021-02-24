@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import '../extension_function.dart';
 import '../colors.dart';
+import 'FlagAndValueWdigetController.dart';
+import 'package:get/get.dart';
 
 class FlagAndValue extends StatelessWidget {
   String currency = '';
   double value = 0.0;
+  FlagAndValueWdigetController _c;
 
   FlagAndValue(String currency, double value) {
     this.currency = currency.toUpperCase();
     this.value = value;
+
+    _c = Get.put(FlagAndValueWdigetController(currency), tag: "currency");
   }
 
   @override
@@ -34,13 +39,13 @@ class FlagAndValue extends StatelessWidget {
             ),
           ],
         ),
-        Text(
-          value.toString(),
-          style: TextStyle(
-            color: currencyValueColor,
-            fontSize: 30,
-          ),
-        )
+        Obx(() => Text(
+              _c.answer.value,
+              style: TextStyle(
+                color: currencyValueColor,
+                fontSize: 30,
+              ),
+            ))
       ],
     );
   }
