@@ -19,6 +19,16 @@ class FlagAndValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
+      confirmDismiss: (direction) async {
+        if (direction == DismissDirection.startToEnd) {
+          //TODO  change currency
+
+        } else {
+          //TODO   currency detail
+
+        }
+        return false;
+      },
       background: slideRightBackground(),
       secondaryBackground: slideLeftBackground(),
       key: Key(currency),
