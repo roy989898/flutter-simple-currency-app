@@ -21,11 +21,9 @@ class FlagAndValue extends StatelessWidget {
     return Dismissible(
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.startToEnd) {
-          //TODO  change currency
           Get.toNamed("/change_c", arguments: currency);
         } else {
-          //TODO   currency detail
-
+          Get.toNamed("/detail", arguments: currency);
         }
         return false;
       },

@@ -3,6 +3,8 @@ import 'package:flutter_currency/home.dart';
 import 'package:flutter_currency/page/CalculatorPage/CalculatorController.dart';
 import 'package:flutter_currency/page/ChangeCurrencyPage/ChangeCurrecnyController.dart';
 import 'package:flutter_currency/page/ChangeCurrencyPage/ChnageCurrecnyPage.dart';
+import 'package:flutter_currency/page/CurrencyDetailPage/CurrencyDetailController.dart';
+import 'package:flutter_currency/page/CurrencyDetailPage/CurrencyDetailPage.dart';
 import 'package:get/get.dart';
 
 import 'MainController.dart';
@@ -37,6 +39,13 @@ class MyApp extends StatelessWidget {
           page: () => ChangeCurrency(),
           binding: BindingsBuilder(() {
             Get.put<ChangeCurrencyController>(ChangeCurrencyController());
+          }),
+        ),
+        GetPage(
+          name: '/detail',
+          page: () => CurrencyDetailPage(),
+          binding: BindingsBuilder(() {
+            Get.put<CurrencyDetailController>(CurrencyDetailController());
           }),
         )
       ],
