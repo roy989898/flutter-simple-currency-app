@@ -22,7 +22,7 @@ class FlagAndValue extends StatelessWidget {
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.startToEnd) {
           //TODO  change currency
-
+          Get.toNamed("/change_c", arguments: currency);
         } else {
           //TODO   currency detail
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency/home.dart';
 import 'package:flutter_currency/page/CalculatorPage/CalculatorController.dart';
+import 'package:flutter_currency/page/ChangeCurrencyPage/ChangeCurrecnyController.dart';
+import 'package:flutter_currency/page/ChangeCurrencyPage/ChnageCurrecnyPage.dart';
 import 'package:get/get.dart';
 
 import 'MainController.dart';
@@ -27,6 +29,13 @@ class MyApp extends StatelessWidget {
           page: () => CalculatorPage(),
           binding: BindingsBuilder(() {
             Get.put<CalculatorController>(CalculatorController());
+          }),
+        ),
+        GetPage(
+          name: '/change_c',
+          page: () => ChangeCurrency(),
+          binding: BindingsBuilder(() {
+            Get.put<ChangeCurrencyController>(ChangeCurrencyController());
           }),
         )
       ],
