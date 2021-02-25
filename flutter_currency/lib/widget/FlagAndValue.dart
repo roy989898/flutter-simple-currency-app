@@ -111,8 +111,9 @@ class _FlagAndValueAnimationState extends State<FlagAndValueAnimation> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Obx(() => Visibility(
-                        visible: _c.visible.value,
+                  Obx(() => AnimatedContainer(
+                        height: _c.visible.value ? 10 : 0,
+                        duration: Duration(milliseconds: 200),
                         child: Obx(() => Text(
                               _c.formula.value,
                               style: TextStyle(
