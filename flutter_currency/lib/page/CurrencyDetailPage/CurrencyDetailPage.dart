@@ -9,6 +9,7 @@ import 'CurrencyDetailController.dart';
 class CurrencyDetailPage extends StatelessWidget {
   final CurrencyDetailController c = Get.find();
   final MainController mainC = Get.find();
+
   @override
   Widget build(BuildContext context) {
     String comeFromCurrency = Get.arguments;
@@ -71,11 +72,15 @@ class CurrencyDetailPage extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(right: 16.0, left: 6.0),
-                          child: LineChart(
-                            true ? sampleData1() : sampleData2(),
-                            swapAnimationDuration:
-                                const Duration(milliseconds: 250),
-                          ),
+                          child: Obx(() {
+                            var b = c.lineDate.value;
+                            return LineChart(
+                              // sampleData1(),
+                              createDataO(linesBarData1()[3]),
+                              swapAnimationDuration:
+                                  const Duration(milliseconds: 250),
+                            );
+                          }),
                         ),
                       ),
                       const SizedBox(
@@ -100,6 +105,97 @@ class CurrencyDetailPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  LineChartData createDataO(LineChartBarData barData) {
+    return LineChartData(
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+        ),
+        touchCallback: (LineTouchResponse touchResponse) {},
+        handleBuiltInTouches: true,
+      ),
+      gridData: FlGridData(
+        show: false,
+      ),
+      titlesData: FlTitlesData(
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 22,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff72719b),
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          margin: 10,
+          getTitles: (double value) {
+            //TODO x bar
+            /*switch (value.toInt()) {
+              case 2:
+                return 'SEPT';
+              case 7:
+                return 'OCT';
+              case 12:
+                return 'DEC';
+            }
+            return '';*/
+            var date = DateTime.fromMicrosecondsSinceEpoch(value.toInt());
+            print(date.year.toString());
+            return 0.toString();
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff75729e),
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+          getTitles: (value) {
+            //TODO y
+            /* switch (value.toInt()) {
+              case 1:
+                return '1m';
+              case 2:
+                return '2m';
+              case 3:
+                return '3m';
+              case 4:
+                return '5m';
+            }
+            return '';*/
+            // print(value.toString());
+            return 0.toString();
+          },
+          margin: 8,
+          reservedSize: 30,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: true,
+        border: const Border(
+          bottom: BorderSide(
+            color: Color(0xff4e4965),
+            width: 4,
+          ),
+          left: BorderSide(
+            color: Colors.transparent,
+          ),
+          right: BorderSide(
+            color: Colors.transparent,
+          ),
+          top: BorderSide(
+            color: Colors.transparent,
+          ),
+        ),
+      ),
+      minX: 0,
+      maxX: 14,
+      maxY: 4,
+      minY: 0,
+      lineBarsData: [barData],
     );
   }
 
@@ -254,10 +350,32 @@ class CurrencyDetailPage extends StatelessWidget {
         show: false,
       ),
     );
+    final LineChartBarData lineChartBarData4 = LineChartBarData(
+      spots: [
+        FlSpot(0, 4),
+        FlSpot(1,1),
+        FlSpot(2, 1),
+        FlSpot(3, 1),
+        FlSpot(4, 1),
+      ],
+      isCurved: true,
+      colors: const [
+        Color(0xff27b6fc),
+      ],
+      barWidth: 8,
+      isStrokeCapRound: true,
+      dotData: FlDotData(
+        show: false,
+      ),
+      belowBarData: BarAreaData(
+        show: false,
+      ),
+    );
     return [
       lineChartBarData1,
       lineChartBarData2,
       lineChartBarData3,
+      lineChartBarData4
     ];
   }
 
