@@ -32,6 +32,18 @@ class ChangeCurrencyController extends GetxController {
     }));
     // toDisplayCurrency.add(ChangeCurrencyListItem('USD', true));
   }
+
+  changeCurrency(String fromCurrency, String toCurrency) {
+    var currentDisplayCurrency = _rxStore.rxToDisplayCurrencySubject.value;
+    var newDisplayCurrency = currentDisplayCurrency.map((e) {
+      if (e == fromCurrency) {
+        return toCurrency;
+      } else {
+        return e;
+      }
+    }).toList();
+    _rxStore.rxToDisplayCurrencySubject.add(newDisplayCurrency);
+  }
 }
 
 class ChangeCurrencyListItem {

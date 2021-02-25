@@ -31,38 +31,49 @@ class ChangeCurrency extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 55,
-                                  child: ImageFlag(
-                                      c.toDisplayCurrency[index].currency),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    c.toDisplayCurrency[index].currency,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: gary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            if (!c.toDisplayCurrency[index].selected) {
+                              c.changeCurrency(comeFromCurrency,
+                                  c.toDisplayCurrency[index].currency);
+                              comeFromCurrency =
+                                  c.toDisplayCurrency[index].currency;
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 55,
+                                    child: ImageFlag(
+                                        c.toDisplayCurrency[index].currency),
                                   ),
-                                )
-                              ],
-                            ),
-                            Visibility(
-                              visible: c.toDisplayCurrency[index].selected,
-                              child: Icon(
-                                Icons.done,
-                                color: dark,
-                                size: 24.0,
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8),
+                                    child: Text(
+                                      c.toDisplayCurrency[index].currency,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: gary,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
-                            ),
-                          ],
+                              Visibility(
+                                visible: c.toDisplayCurrency[index].selected,
+                                child: Icon(
+                                  Icons.done,
+                                  color: dark,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
