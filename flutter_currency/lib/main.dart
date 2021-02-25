@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency/home.dart';
+import 'package:flutter_currency/page/CalculatorPage/CalculatorController.dart';
 import 'package:get/get.dart';
 
 import 'MainController.dart';
@@ -19,12 +20,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => CalculatorPage(),
+          binding: BindingsBuilder(() {
+            Get.put<CalculatorController>(CalculatorController());
+          }),
+        )
+      ],
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CalculatorPage(),
+      // home: CalculatorPage(),
     );
   }
 }

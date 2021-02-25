@@ -7,7 +7,7 @@ import 'CalculatorController.dart';
 import '../../widget/FlagAndValue.dart';
 
 class CalculatorPage extends StatelessWidget {
-  final CalculatorController c = Get.put(CalculatorController());
+  final CalculatorController c = Get.find();
   final MainController mainC = Get.find();
 
   @override
