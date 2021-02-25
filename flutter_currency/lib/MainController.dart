@@ -20,6 +20,11 @@ class MainController extends GetxController {
     api.getCurrency().then((List<String> value) {
       print(json.encode(value));
       _rxStore.rxCurrencySubject.add(value);
+      if (value.length > 6) {
+        _rxStore.rxToDisplayCurrencySubject.add(value.getRange(0, 7).toList());
+      } else {
+        _rxStore.rxToDisplayCurrencySubject.add(value.toList());
+      }
       // currency.assignAll(value);
     }).catchError((e) {
       print(e);

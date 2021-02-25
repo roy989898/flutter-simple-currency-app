@@ -17,14 +17,15 @@ class CalculatorController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    _rxCurrencySub = _rxStore.rxCurrencySubject.listen((currencys) {
+    /* _rxCurrencySub = _rxStore.rxCurrencySubject.listen((currencys) {
       print(' mainC.currency.listen: ' + currencys.length.toString());
       if (currencys.length > 6) {
         toDisplayCurrency.assignAll(currencys.getRange(0, 7));
       } else {
         toDisplayCurrency.assignAll(currencys);
       }
-    });
+    }); */
+    toDisplayCurrency.bindStream(_rxStore.rxToDisplayCurrencySubject);
   }
 
   @override

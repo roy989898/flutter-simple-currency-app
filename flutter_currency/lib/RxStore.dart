@@ -5,6 +5,7 @@ import 'api/LatestRateResponse.dart';
 
 class RxStore extends GetxService {
   final rxCurrencySubject = BehaviorSubject<List<String>>();
+  final rxToDisplayCurrencySubject = BehaviorSubject<List<String>>();
   final rxSelectedBaseCurrency = BehaviorSubject<String>();
   final rxLatestRateResponse = BehaviorSubject<LatestRateResponse>();
   final rxFormula = BehaviorSubject<String>();
