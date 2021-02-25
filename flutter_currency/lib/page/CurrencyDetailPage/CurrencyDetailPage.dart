@@ -275,6 +275,7 @@ class CurrencyDetailPage extends StatelessWidget {
           ),
         ),
       ),
+      //TODO here
       minX: 0,
       maxX: 14,
       maxY: 4,
@@ -356,7 +357,7 @@ class CurrencyDetailPage extends StatelessWidget {
         FlSpot(1,1),
         FlSpot(2, 1),
         FlSpot(3, 1),
-        FlSpot(4, 1),
+        FlSpot(4, 100),
       ],
       isCurved: true,
       colors: const [
