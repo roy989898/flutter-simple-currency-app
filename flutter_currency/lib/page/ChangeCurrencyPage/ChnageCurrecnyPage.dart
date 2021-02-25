@@ -24,7 +24,17 @@ class ChangeCurrency extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
               child: Container(
-                  child: Text('in change currency page: ' + comeFromCurrency)),
+                child: Obx(
+                  () => ListView.builder(
+                    itemCount: c.toDisplayCurrency.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Text(c.toDisplayCurrency[index].currency +
+                          ' ' +
+                          c.toDisplayCurrency[index].selected.toString());
+                    },
+                  ),
+                ),
+              ),
             )),
       ),
     );
