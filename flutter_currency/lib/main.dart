@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'MainController.dart';
 import 'RxStore.dart';
 import 'api/ApiManager.dart';
+import 'colors.dart';
 import 'page/CalculatorPage/CalculatorPage.dart';
 
 void main() {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       ],
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: CalculatorPage(),
