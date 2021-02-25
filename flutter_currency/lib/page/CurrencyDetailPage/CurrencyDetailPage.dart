@@ -12,6 +12,11 @@ class CurrencyDetailPage extends StatelessWidget {
           shadowColor: transparent,
           title: Text(comeFromCurrency),
         ),
+        body: Container(
+          color: white,
+          width: double.infinity,
+          height: double.infinity,
+        ),
       ),
     );
   }

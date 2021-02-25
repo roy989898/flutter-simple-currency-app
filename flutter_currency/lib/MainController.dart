@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_currency/RxStore.dart';
+import 'package:flutter_currency/api/HistoryResponse.dart';
 import 'package:flutter_currency/api/LatestRateResponse.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import 'api/ApiManager.dart';
 
@@ -35,5 +37,25 @@ class MainController extends GetxController {
     }).catchError((e) {
       print(e);
     });
+
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    final String formatted = formatter.format(now);
+    api
+        .getHistory("1900-01-01", formatted, 'USD')
+        .then((HistoryResponse value) {
+      var list = List<DayHistory>();
+      value.rates.forEach((String key, Map<String, double> value) {
+        var parsedDate = DateTime.parse(key);
+        list.add(DayHistory(parsedDate, value));
+      });
+      list.sort((a, b) {
+        return a.date.isBefore(b.date) ? -1 : 1;
+      });
+      _rxStore.rxHistory.add(list);
+    }).catchError((e) {
+      print(e);
+    });
+    ;
   }
 }

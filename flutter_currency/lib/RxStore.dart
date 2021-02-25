@@ -3,12 +3,20 @@ import 'package:rxdart/rxdart.dart';
 
 import 'api/LatestRateResponse.dart';
 
+class DayHistory {
+  DateTime date;
+  Map<String, double> currencyRatePair;
+
+  DayHistory(this.date, this.currencyRatePair);
+}
+
 class RxStore extends GetxService {
   final rxCurrencySubject = BehaviorSubject<List<String>>();
   final rxToDisplayCurrencySubject = BehaviorSubject<List<String>>();
   final rxSelectedBaseCurrency = BehaviorSubject<String>();
   final rxLatestRateResponse = BehaviorSubject<LatestRateResponse>();
   final rxFormula = BehaviorSubject<String>();
+  final rxHistory = BehaviorSubject<List<DayHistory>>();
   var currenctFormula = '';
 
   keyInFormula(String input) {
