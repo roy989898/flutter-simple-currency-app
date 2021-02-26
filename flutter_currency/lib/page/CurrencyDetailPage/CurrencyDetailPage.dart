@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../MainController.dart';
 import '../../colors.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -76,7 +77,8 @@ class CurrencyDetailPage extends StatelessWidget {
                             var b = c.lineDate.value;
                             return LineChart(
                               // sampleData1(),
-                              createDataO(linesBarData1()[3]),
+                              // createDataO(linesBarData1()[3]),
+                              createDataO(b),
                               swapAnimationDuration:
                                   const Duration(milliseconds: 250),
                             );
@@ -111,6 +113,7 @@ class CurrencyDetailPage extends StatelessWidget {
   LineChartData createDataO(LineChartBarData barData) {
     var minX = barData.spots[0].x;
     var maxX = barData.spots[barData.spots.length - 1].x;
+    var xDif = maxX - minX;
 
     List<FlSpot> tempSpots = List.from(barData.spots);
     tempSpots.sort((a, b) {
@@ -157,9 +160,11 @@ class CurrencyDetailPage extends StatelessWidget {
                 return 'DEC';
             }
             return '';*/
-            var date = DateTime.fromMicrosecondsSinceEpoch(value.toInt());
-            print(date.year.toString());
-            return value.toString();
+            var date = DateTime.fromMillisecondsSinceEpoch(value.toInt());
+            // print(date.year.toString());
+            var show = date.day.toString();
+            var f = new NumberFormat("###", "en_US");
+            return f.format(value);
           },
         ),
         leftTitles: SideTitles(
@@ -183,7 +188,7 @@ class CurrencyDetailPage extends StatelessWidget {
             }
             return '';*/
             // print(value.toString());
-            return value.toString();
+            return "";
           },
           margin: 8,
           reservedSize: 30,

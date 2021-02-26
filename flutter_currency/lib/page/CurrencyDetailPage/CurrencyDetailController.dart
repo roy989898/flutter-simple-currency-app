@@ -28,16 +28,19 @@ class CurrencyDetailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    //day
     var rxS = _rxStore.rxHistory.map((List<DayHistory> event) {
-      List<FlSpot> spots = event.map((e) {
-        var microsecondsSinceEpoch = e.date.microsecondsSinceEpoch;
+      List<FlSpot> spots =
+          event.sublist(event.length - 5, event.length).map((e) {
+        var millisecondsSinceEpoch = e.date.millisecondsSinceEpoch;
         // var d = e.date.microsecond.toDouble();
-        return FlSpot(microsecondsSinceEpoch.toDouble(), e.currencyRatePair['CAD']);
+        return FlSpot(
+            e.date.day.toDouble(), e.currencyRatePair['CAD']);
       }).toList();
       if (spots.isEmpty) {
         spots.add(FlSpot(0, 0));
       }
-      var l = spots.sublist(0, 3);
+      var l = spots;
       return LineChartBarData(
         spots: [...l],
         isCurved: true,
