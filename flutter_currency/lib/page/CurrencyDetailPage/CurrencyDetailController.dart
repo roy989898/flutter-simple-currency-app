@@ -8,13 +8,14 @@ import 'package:rxdart/rxdart.dart' as RxDart;
 class CurrencyDetailController extends GetxController {
   final MainController mainC = Get.find();
   final RxStore _rxStore = Get.find();
+  final title = ''.obs;
 
   Rx<LineChartBarData> lineDate = LineChartBarData(
     spots: [FlSpot(0, 0)],
     isCurved: true,
     curveSmoothness: 0,
     colors: const [
-      Color(0x444af699),
+      Colors.green,
     ],
     barWidth: 4,
     isStrokeCapRound: true,
@@ -31,6 +32,11 @@ class CurrencyDetailController extends GetxController {
     super.onInit();
     //day
 
+    title.bindStream(RxDart.Rx.combineLatest2(
+        _rxStore.rxShowHistoryCurrency, _rxStore.rxSelectedBaseCurrency,
+        (String a, String b) {
+      return "$a/$b";
+    }));
     var rxS = RxDart.Rx.combineLatest3(_rxStore.rxShowHistoryCurrency,
         _rxStore.rxHistory, _rxStore.rxSelectedBaseCurrency,
         (String a, List<DayHistory> event, String selectedBaseCurrency) {
@@ -53,7 +59,7 @@ class CurrencyDetailController extends GetxController {
         isCurved: true,
         curveSmoothness: 0,
         colors: const [
-          Color(0x444af699),
+          Colors.green,
         ],
         barWidth: 4,
         isStrokeCapRound: true,
