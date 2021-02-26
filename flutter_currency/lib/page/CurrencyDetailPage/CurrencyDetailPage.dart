@@ -109,6 +109,22 @@ class CurrencyDetailPage extends StatelessWidget {
   }
 
   LineChartData createDataO(LineChartBarData barData) {
+    var minX = barData.spots[0].x;
+    var maxX = barData.spots[barData.spots.length - 1].x;
+
+    List<FlSpot> tempSpots = List.from(barData.spots);
+    tempSpots.sort((a, b) {
+      if (a.y < b.y) {
+        return -1;
+      } else if (a.y > b.y) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    var minY = tempSpots[0].y;
+    var maxY = tempSpots[tempSpots.length - 1].y;
+
     return LineChartData(
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
@@ -143,7 +159,7 @@ class CurrencyDetailPage extends StatelessWidget {
             return '';*/
             var date = DateTime.fromMicrosecondsSinceEpoch(value.toInt());
             print(date.year.toString());
-            return 0.toString();
+            return value.toString();
           },
         ),
         leftTitles: SideTitles(
@@ -167,7 +183,7 @@ class CurrencyDetailPage extends StatelessWidget {
             }
             return '';*/
             // print(value.toString());
-            return 0.toString();
+            return value.toString();
           },
           margin: 8,
           reservedSize: 30,
@@ -191,10 +207,10 @@ class CurrencyDetailPage extends StatelessWidget {
           ),
         ),
       ),
-      minX: 0,
-      maxX: 14,
-      maxY: 4,
-      minY: 0,
+      minX: minX,
+      maxX: maxX,
+      maxY: maxY,
+      minY: minY,
       lineBarsData: [barData],
     );
   }
@@ -353,11 +369,11 @@ class CurrencyDetailPage extends StatelessWidget {
     );
     final LineChartBarData lineChartBarData4 = LineChartBarData(
       spots: [
-        FlSpot(0, 4),
-        FlSpot(1,1),
-        FlSpot(2, 1),
-        FlSpot(3, 1),
-        FlSpot(4, 100),
+        FlSpot(0, 6),
+        FlSpot(1, 7),
+        FlSpot(2, 8),
+        FlSpot(3, 9),
+        FlSpot(4, 0),
       ],
       isCurved: true,
       colors: const [
