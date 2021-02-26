@@ -30,43 +30,19 @@ class CurrencyDetailController extends GetxController {
   void onInit() {
     super.onInit();
     //day
-    _rxStore.rxHistory.map((List<DayHistory> event) {
-      List<FlSpot> spots =
-          event.sublist(event.length - 10, event.length).map((e) {
-        var millisecondsSinceEpoch = e.date.millisecondsSinceEpoch;
-        // var d = e.date.microsecond.toDouble();
-        return FlSpot(e.date.day.toDouble(), e.currencyRatePair['CAD']);
-      }).toList();
-      if (spots.isEmpty) {
-        spots.add(FlSpot(0, 0));
-      }
-      var l = spots;
-      return LineChartBarData(
-        spots: [...l],
-        isCurved: true,
-        curveSmoothness: 0,
-        colors: const [
-          Color(0x444af699),
-        ],
-        barWidth: 4,
-        isStrokeCapRound: true,
-        dotData: FlDotData(
-          show: false,
-        ),
-        belowBarData: BarAreaData(
-          show: false,
-        ),
-      );
-    });
 
-    var rxS = RxDart.Rx.combineLatest2(
-        _rxStore.rxShowHistoryCurrency, _rxStore.rxHistory,
-        (String a, List<DayHistory> event) {
+    var rxS = RxDart.Rx.combineLatest3(_rxStore.rxShowHistoryCurrency,
+        _rxStore.rxHistory, _rxStore.rxSelectedBaseCurrency,
+        (String a, List<DayHistory> event, String selectedBaseCurrency) {
       List<FlSpot> spots =
           event.sublist(event.length - 10, event.length).map((e) {
         var millisecondsSinceEpoch = e.date.millisecondsSinceEpoch;
         // var d = e.date.microsecond.toDouble();
-        return FlSpot(e.date.day.toDouble(), e.currencyRatePair[a]);
+        var base = e.currencyRatePair[selectedBaseCurrency];
+        // var usd = e.currencyRatePair["USD"];
+        var target = e.currencyRatePair[a];
+        var result = target / base;
+        return FlSpot(e.date.day.toDouble(), result);
       }).toList();
       if (spots.isEmpty) {
         spots.add(FlSpot(0, 0));
