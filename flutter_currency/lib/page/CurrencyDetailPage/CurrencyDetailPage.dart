@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../MainController.dart';
+import '../../RxStore.dart';
 import '../../colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -10,10 +11,12 @@ import 'CurrencyDetailController.dart';
 class CurrencyDetailPage extends StatelessWidget {
   final CurrencyDetailController c = Get.find();
   final MainController mainC = Get.find();
+  final RxStore _rxStore = Get.find();
 
   @override
   Widget build(BuildContext context) {
     String comeFromCurrency = Get.arguments;
+    _rxStore.rxShowHistoryCurrency.add(comeFromCurrency);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

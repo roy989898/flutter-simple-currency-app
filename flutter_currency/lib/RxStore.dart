@@ -17,6 +17,7 @@ class RxStore extends GetxService {
   final rxLatestRateResponse = BehaviorSubject<LatestRateResponse>();
   final rxFormula = BehaviorSubject<String>();
   final rxHistory = BehaviorSubject<List<DayHistory>>();
+  final rxShowHistoryCurrency = BehaviorSubject<String>();
   var currenctFormula = '';
 
   keyInFormula(String input) {
